@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Design Tokens - Premium Dark Theme */
+:root {
+  --color-bg: #0a0a0a;
+  --color-surface: #1a1a1a;
+  --color-primary: #FF6B00; /* Vibrant high-contrast orange-gold */
+  --color-text-primary: #f5f5f5;
+  --color-text-secondary: #999999;
+  --color-border: rgba(255, 255, 255, 0.08);
+  
+  --font-manrope: 'Manrope', var(--font-manrope), sans-serif;
+  
+  /* Scrollbar tokens */
+  --scrollbar-bg: #0a0a0a;
+  --scrollbar-thumb: #333333;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: var(--font-manrope);
+  }
+  
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
+    overflow-x: hidden;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Global Typography System */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-manrope);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--color-text-primary);
+    margin: 0;
+  }
+
+  h1 {
+    font-size: clamp(1.8rem, 5vw, 3.5rem);
+  }
+
+  h2 {
+    font-size: clamp(1.4rem, 4vw, 2.5rem);
+  }
+
+  h3 {
+    font-size: clamp(1.1rem, 3vw, 1.6rem);
+  }
+
+  p {
+    font-family: var(--font-manrope);
+    font-weight: 400;
+    line-height: 1.8;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  /* Ensure selection uses brand color */
+  ::selection {
+    background-color: var(--color-primary);
+    color: #000000;
+  }
+}
+
+/* Custom Premium Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* Clean Hide Scrollbar Utility for Horizontal Scrolling Cards */
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+/* Scroll Fade Animation */
+.fade-in-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+.fade-in-scroll.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delay classes */
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }
+.delay-400 { transition-delay: 0.4s; }
+
+/* Custom styles for transformations slider */
+.slider-handle-shadow {
+  box-shadow: 0 0 10px rgba(255, 107, 0, 0.5);
+}
